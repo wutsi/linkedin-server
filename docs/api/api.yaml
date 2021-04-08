@@ -1,0 +1,101 @@
+openapi: 3.0.0
+info:
+  title: Wutsi LinkedIn API
+  description: |
+    API for sharing stories on LinkedIn.
+  version: 1.0.0
+servers:
+  - url: 'https://wutsi-linkedin-test.herokuapp.com'
+    description: Sandbox
+  - url: 'https://wutsi-linkedin-prod.herokuapp.com'
+    description: Production
+paths:
+  /v1/linkedin/share:
+    get:
+      operationId: share
+      summary: Share a Story
+      parameters:
+        - in: query
+          name: story-id
+          description: ID of the story to share
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+      tags:
+        - LinkedIn
+  /v1/linkedin/secrets:
+    post:
+      operationId: store-secret
+      summary: Store LinkedIn secret information
+      description: |
+        Store the secrets for a LinkedIn user.
+        The secrets includes access-token and access-token-secret
+      requestBody:
+        description: request
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StoreSecretRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StoreSecretResponse'
+      tags:
+        - LinkedIn
+  '/v1/linkedin/secrets/{id}':
+    delete:
+      operationId: revoke-secret
+      summary: Revoke LinkedIn secret information
+      parameters:
+        - in: path
+          name: id
+          description: ID of secret to revoke
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: Success
+      tags:
+        - LinkedIn
+components:
+  schemas:
+    StoreSecretRequest:
+      type: object
+      properties:
+        siteId:
+          type: integer
+          format: int64
+          example: 1
+        userId:
+          type: integer
+          format: int64
+          example: 1
+        linkedinId:
+          type: string
+        accessToken:
+          type: string
+        accessTokenSecret:
+          type: string
+      required:
+        - userId
+        - siteId
+        - linkedinId
+        - accessToken
+        - accessTokenSecret
+    StoreSecretResponse:
+      type: object
+      properties:
+        secretId:
+          type: integer
+          format: int64
+          example: 123

@@ -1,0 +1,17 @@
+spring:
+  flyway:
+    clean-disabled: true
+
+  jpa:
+    show-sql: false
+
+  datasource:
+    url: ${SPRING_DATABASE_URL}
+    username: ${SPRING_DATABASE_USERNAME}
+    password: ${SPRING_DATABASE_PASSWORD}
+
+rabbitmq:
+  enabled: true
+  url: ${CLOUDAMQP_URL}
+  thread-pool-size: 8
+
