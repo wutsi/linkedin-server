@@ -72,7 +72,7 @@ public class ShareDelegate(
     ): Share? {
         var result: Share? = null
         try {
-            postShare(
+            result = postShare(
                 title = story.title,
                 text = text(story, site, message, includeLink),
                 pictureUrl = pictureUrl,
