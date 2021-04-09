@@ -80,8 +80,9 @@ public class ShareDelegate(
                 url = bitly.shorten(story.slug, site),
                 secret = secret
             )
+            LOGGER.info("Story#${story.id} shared to Linkedin. shareid=${result.id}")
         } catch (ex: Exception) {
-            LOGGER.error("Unable to share the story", ex)
+            LOGGER.error("Unable to share the Story#${story.id} to Linkedin", ex)
             save(story, site, secret, ex, postId)
         } finally {
             if (result != null) {
