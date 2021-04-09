@@ -72,7 +72,7 @@ public class ShareDelegate(
     ): Share? {
         var result: Share? = null
         try {
-            result = linkedin.postShare(
+            postShare(
                 title = story.title,
                 text = text(story, site, message, includeLink),
                 pictureUrl = pictureUrl,
@@ -91,6 +91,23 @@ public class ShareDelegate(
 
         return result
     }
+
+    private fun postShare(
+        title: String,
+        text: String,
+        url: String,
+        pictureUrl: String?,
+        includeLink: Boolean,
+        secret: SecretEntity
+    ): Share =
+        linkedin.postShare(
+            title = title,
+            text = text,
+            pictureUrl = pictureUrl,
+            includeLink = includeLink,
+            url = url,
+            secret = secret
+        )
 
     private fun save(
         story: Story,

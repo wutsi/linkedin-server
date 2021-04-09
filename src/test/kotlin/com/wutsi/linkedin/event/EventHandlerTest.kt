@@ -61,7 +61,36 @@ internal class EventHandlerTest {
     }
 
     @Test
-    fun `submitted secrets are stored`() {
+    fun `submitted LinkedIn secrets are stored`() {
+        handler.onEvent(
+            Event(
+                id = UUID.randomUUID().toString(),
+                type = ChannelEventType.SECRET_SUBMITTED.urn,
+                payload = """
+                    {
+                        "userId": 11,
+                        "siteId": 1,
+                        "channelUserId": "4409403",
+                        "accessToken": "token",
+                        "accessTokenSecret": "secret",
+                        "type": "linkedin"
+                    }
+                """.trimIndent()
+            )
+        )
+
+        val request = argumentCaptor<StoreSecretRequest>()
+        verify(storeSecretDelegate).invoke(request.capture())
+
+        assertEquals(1L, request.firstValue.siteId)
+        assertEquals(11L, request.firstValue.userId)
+        assertEquals("4409403", request.firstValue.linkedinId)
+        assertEquals("token", request.firstValue.accessToken)
+        assertEquals("secret", request.firstValue.accessTokenSecret)
+    }
+
+    @Test
+    fun `submitted Twitter secrets are ignored`() {
         handler.onEvent(
             Event(
                 id = UUID.randomUUID().toString(),
@@ -79,18 +108,30 @@ internal class EventHandlerTest {
             )
         )
 
-        val request = argumentCaptor<StoreSecretRequest>()
-        verify(storeSecretDelegate).invoke(request.capture())
-
-        assertEquals(1L, request.firstValue.siteId)
-        assertEquals(11L, request.firstValue.userId)
-        assertEquals("4409403", request.firstValue.linkedinId)
-        assertEquals("token", request.firstValue.accessToken)
-        assertEquals("secret", request.firstValue.accessTokenSecret)
+        verify(storeSecretDelegate, never()).invoke(any())
     }
 
     @Test
-    fun `revoked secrets are deleted`() {
+    fun `revoked LinkedIn secrets are deleted`() {
+        handler.onEvent(
+            Event(
+                id = UUID.randomUUID().toString(),
+                type = ChannelEventType.SECRET_REVOKED.urn,
+                payload = """
+                    {
+                        "userId": 11,
+                        "siteId": 1,
+                        "type": "twitter"
+                    }
+                """.trimIndent()
+            )
+        )
+
+        verify(revokedSecretDelegate, never()).invoke(any(), any())
+    }
+
+    @Test
+    fun `revoked Twitter secrets are ignored`() {
         handler.onEvent(
             Event(
                 id = UUID.randomUUID().toString(),

@@ -53,7 +53,7 @@ class EventHandler(
 
     private fun onSecretSubmitted(event: Event) {
         val payload = ObjectMapperBuilder().build().readValue(event.payload, ChannelSecretSubmittedEventPayload::class.java)
-        if (payload.type == "twitter") {
+        if (payload.type == CHANNEL_TYPE) {
             storeSecretDelegate.invoke(
                 request = StoreSecretRequest(
                     userId = payload.userId,
