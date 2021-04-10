@@ -58,3 +58,11 @@ rabbitmq:
   enabled: false
 
 
+logging:
+  level:
+    root: INFO
+
+  pattern:
+    console: "%d type=%level logger=%class{20} thread=%thread %m%n"
+    file: "%d type=%level logger=%class{20} thread=%thread %m%n"
+
