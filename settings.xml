@@ -41,6 +41,11 @@
       <username>wutsi</username>
       <password>${GITHUB_TOKEN}</password>
     </server>
+    <server>
+      <id>wutsi-bitly</id>
+      <username>wutsi</username>
+      <password>${GITHUB_TOKEN}</password>
+    </server>
   </servers>
 
 </settings>

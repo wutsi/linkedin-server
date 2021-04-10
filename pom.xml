@@ -24,7 +24,6 @@
     <jacoco-maven-plugin.version>0.8.2</jacoco-maven-plugin.version>
     <jdk.version>11</jdk.version>
 
-    <bitly-api-client.version>0.8.0</bitly-api-client.version>
     <commons-io.version>2.4</commons-io.version>
     <javax-validation.version>2.0.1.Final</javax-validation.version>
     <junit.version>5.6.0</junit.version>
@@ -38,6 +37,7 @@
     <hikari-cp.version>4.0.3</hikari-cp.version>
     <postgresql.version>42.2.19</postgresql.version>
     <flyway.version>7.7.0</flyway.version>
+    <wutsi-bitly.version>1.0.0</wutsi-bitly.version>
     <wutsi-channel-sdk.version>1.1.0</wutsi-channel-sdk.version>
     <wutsi-post-sdk.version>1.0.0</wutsi-post-sdk.version>
     <wutsi-stream-rabbitmq.version>1.0.0</wutsi-stream-rabbitmq.version>
@@ -73,9 +73,9 @@
       <version>${wutsi-linkedin-sdk.version}</version>
     </dependency>
     <dependency>
-      <groupId>net.swisstech</groupId>
-      <artifactId>bitly-api-client</artifactId>
-      <version>${bitly-api-client.version}</version>
+      <groupId>com.wutsi.bitly</groupId>
+      <artifactId>wutsi-bitly</artifactId>
+      <version>${wutsi-bitly.version}</version>
     </dependency>
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
@@ -219,6 +219,10 @@
     <repository>
       <id>wutsi-linkedin-sdk-kotlin</id>
       <url>https://maven.pkg.github.com/wutsi/linkedin-sdk-kotlin</url>
+    </repository>
+    <repository>
+      <id>wutsi-bitly</id>
+      <url>https://maven.pkg.github.com/wutsi/wutsi-bitly</url>
     </repository>
   </repositories>
 

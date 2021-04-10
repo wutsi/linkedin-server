@@ -9,7 +9,7 @@ import com.wutsi.linkedin.entity.SecretEntity
 import com.wutsi.linkedin.entity.ShareEntity
 import com.wutsi.linkedin.event.LinkedinEventType
 import com.wutsi.linkedin.event.LinkedinSharedEventPayload
-import com.wutsi.linkedin.service.bitly.BitlyUrlShortener
+import com.wutsi.linkedin.service.bitly.BitlyUrlShortenerFactory
 import com.wutsi.linkedin.service.linkedin.Linkedin
 import com.wutsi.site.SiteApi
 import com.wutsi.site.dto.Site
@@ -27,7 +27,7 @@ public class ShareDelegate(
     @Autowired private val storyApi: StoryApi,
     @Autowired private val shareDao: ShareRepository,
     @Autowired private val secretDao: SecretRepository,
-    @Autowired private val bitly: BitlyUrlShortener,
+    @Autowired private val bitlyFactory: BitlyUrlShortenerFactory,
     @Autowired private val eventStream: EventStream,
     @Autowired private val linkedin: Linkedin
 ) {
@@ -77,7 +77,7 @@ public class ShareDelegate(
                 text = text(story, site, message, includeLink),
                 pictureUrl = pictureUrl,
                 includeLink = includeLink,
-                url = bitly.shorten(story.slug, site),
+                url = url(story, site),
                 secret = secret
             )
             LOGGER.info("Story#${story.id} shared to Linkedin. shareid=${result.id}")
@@ -172,12 +172,15 @@ public class ShareDelegate(
             story.summary
 
         val url = if (includeLink)
-            bitly.shorten("${site.websiteUrl}${story.slug}?utm_source=linkedin", site)
+            url(story, site)
         else
             ""
 
         return "$text $url".trim()
     }
+
+    private fun url(story: Story, site: Site): String =
+        bitlyFactory.get(site).shorten("${site.websiteUrl}${story.slug}?utm_source=linkedin")
 
     private fun findSecret(story: Story, site: Site): SecretEntity? {
         val opt = secretDao.findByUserIdAndSiteId(story.userId, site.id)

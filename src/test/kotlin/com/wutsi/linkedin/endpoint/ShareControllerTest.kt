@@ -10,11 +10,12 @@ import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
+import com.wutsi.bitly.BitlyUrlShortener
 import com.wutsi.linkedin.AttributeUrn
 import com.wutsi.linkedin.dao.ShareRepository
 import com.wutsi.linkedin.event.LinkedinEventType.SHARED
 import com.wutsi.linkedin.event.LinkedinSharedEventPayload
-import com.wutsi.linkedin.service.bitly.BitlyUrlShortener
+import com.wutsi.linkedin.service.bitly.BitlyUrlShortenerFactory
 import com.wutsi.linkedin.service.linkedin.Linkedin
 import com.wutsi.site.SiteApi
 import com.wutsi.site.dto.Attribute
@@ -61,7 +62,7 @@ internal class ShareControllerTest {
     private lateinit var linkedin: Linkedin
 
     @MockBean
-    private lateinit var bitly: BitlyUrlShortener
+    private lateinit var bitlyFactory: BitlyUrlShortenerFactory
 
     @MockBean
     private lateinit var eventStream: EventStream
@@ -72,7 +73,9 @@ internal class ShareControllerTest {
     fun setUp() {
         url = "http://127.0.0.1:$port/v1/linkedin/share?story-id={story-id}"
 
-        doReturn(shortenUrl).whenever(bitly).shorten(any(), any())
+        val bitly = mock<BitlyUrlShortener>()
+        doReturn(shortenUrl).whenever(bitly).shorten(any())
+        doReturn(bitly).whenever(bitlyFactory).get(any())
     }
 
     @Test
@@ -219,7 +222,7 @@ internal class ShareControllerTest {
 
     private fun createSite(
         attributes: List<Attribute> = listOf(
-            Attribute(AttributeUrn.ENABLED.urn, "true"),
+            Attribute(AttributeUrn.ENABLED.urn, "true")
         )
     ) = Site(
         id = 1L,
