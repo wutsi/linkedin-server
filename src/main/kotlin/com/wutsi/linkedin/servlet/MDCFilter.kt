@@ -18,7 +18,7 @@ public class MDCFilter : Filter {
         resp: ServletResponse,
         chain: FilterChain
     ) {
-        val requestId = (req as HttpServletRequest).getAttribute("X-Request-ID")
+        val requestId = (req as HttpServletRequest).getHeader("X-Request-ID")
         if (requestId != null)
             MDC.put("request_id", requestId.toString())
 
