@@ -17,5 +17,5 @@ rabbitmq:
 
 logging:
   pattern:
-    console: "request_id=%X{request_id} type=%level logger=%class{20} thread=%thread %m%n"
-    file: "request_id=%X{request_id} type=%level logger=%class{20} thread=%thread %m%n"
+    console: "type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"
+    file: "type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"

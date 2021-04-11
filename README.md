@@ -38,6 +38,11 @@ API for sharing stories on LinkedIn.&#10;
               <password>${env.GITHUB_TOKEN}</password>
             </server>
             <server>
+              <id>wutsi-tracing</id>
+              <username>${env.GITUB_USER}</username>
+              <password>${env.GITHUB_TOKEN}</password>
+            </server>
+            <server>
               <id>wutsi-channel-sdk-kotlin</id>
               <username>${env.GITUB_USER}</username>
               <password>${env.GITHUB_TOKEN}</password>

@@ -57,12 +57,10 @@ spring:
 rabbitmq:
   enabled: false
 
-
 logging:
   level:
     root: INFO
-
   pattern:
-    console: "%d type=%level logger=%class{20} thread=%thread %m%n"
-    file: "%d type=%level logger=%class{20} thread=%thread %m%n"
+    console: "%d type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"
+    file: "%d type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"
 

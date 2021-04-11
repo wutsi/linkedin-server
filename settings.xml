@@ -46,6 +46,11 @@
       <username>wutsi</username>
       <password>${GITHUB_TOKEN}</password>
     </server>
+    <server>
+      <id>wutsi-tracing</id>
+      <username>wutsi</username>
+      <password>${GITHUB_TOKEN}</password>
+    </server>
   </servers>
 
 </settings>
