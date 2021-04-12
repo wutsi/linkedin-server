@@ -1,0 +1,17 @@
+name: scheduled_run
+
+on:
+  schedule:
+    - cron: "* */3 * * *"   # Every 3 hours
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Run
+        run: |
+          curl -sSf https://wutsi-linkedin-prod.herokuapp.com/actuator/health >> /dev/null
+
+
