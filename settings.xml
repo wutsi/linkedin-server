@@ -11,46 +11,6 @@
       <username>wutsi</username>
       <password>${GITHUB_TOKEN}</password>
     </server>
-    <server>
-      <id>wutsi-channel-sdk-kotlin</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-post-sdk-kotlin</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-stream-rabbitmq</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-site-sdk-kotlin</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-story-sdk-kotlin</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-linkedin-sdk-kotlin</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-bitly</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
-    <server>
-      <id>wutsi-tracing</id>
-      <username>wutsi</username>
-      <password>${GITHUB_TOKEN}</password>
-    </server>
   </servers>
 
 </settings>

@@ -1,6 +1,6 @@
 #/bin/sh
 
-CODEGEN_VERSION="0.0.27"
+CODEGEN_VERSION="0.0.28"
 CODEGEN_JAR=~/wutsi-codegen/wutsi-codegen-${CODEGEN_VERSION}.jar
 
 API_NAME=linkedin
@@ -15,7 +15,7 @@ java -jar ${CODEGEN_JAR} server \
     -package com.wutsi.${API_NAME} \
     -jdk 11 \
     -github_user ${GITHUB_USER} \
-    -github_project ${API_NAME}-sdk-kotlin \
+    -github_project ${API_NAME}-server \
     -heroku wutsi-${API_NAME} \
     -service_logger \
     -service_database \

@@ -201,38 +201,8 @@
       <url>http://jcenter.bintray.com</url>
     </repository>
     <repository>
-      <id>wutsi-stream-rabbitmq</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-stream-rabbitmq</url>
-    </repository>
-
-
-    <repository>
-      <id>wutsi-tracing</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-tracing</url>
-    </repository>
-    <repository>
-      <id>wutsi-post-sdk-kotlin</id>
-      <url>https://maven.pkg.github.com/wutsi/post-sdk-kotlin</url>
-    </repository>
-    <repository>
-      <id>wutsi-site-sdk-kotlin</id>
-      <url>https://maven.pkg.github.com/wutsi/site-sdk-kotlin</url>
-    </repository>
-    <repository>
-      <id>wutsi-story-sdk-kotlin</id>
-      <url>https://maven.pkg.github.com/wutsi/story-sdk-kotlin</url>
-    </repository>
-    <repository>
-      <id>wutsi-channel-sdk-kotlin</id>
-      <url>https://maven.pkg.github.com/wutsi/channel-sdk-kotlin</url>
-    </repository>
-    <repository>
-      <id>wutsi-linkedin-sdk-kotlin</id>
-      <url>https://maven.pkg.github.com/wutsi/linkedin-sdk-kotlin</url>
-    </repository>
-    <repository>
-      <id>wutsi-bitly</id>
-      <url>https://maven.pkg.github.com/wutsi/wutsi-bitly</url>
+      <id>github</id>
+      <url>https://maven.pkg.github.com/wutsi/*</url>
     </repository>
   </repositories>
 

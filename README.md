@@ -1,5 +1,4 @@
 [![](https://github.com/wutsi/linkedin-server/actions/workflows/master.yml/badge.svg)](https://github.com/wutsi/linkedin-server/actions/workflows/master.yml)
-[![](https://github.com/wutsi/linkedin-server/actions/workflows/pull_request.yml/badge.svg)](https://github.com/wutsi/linkedin-server/actions/workflows/pull_request.yml)
 
 [![JDK](https://img.shields.io/badge/jdk-11-brightgreen.svg)](https://jdk.java.net/11/)
 [![](https://img.shields.io/badge/maven-3.6-brightgreen.svg)](https://maven.apache.org/download.cgi)
@@ -33,43 +32,8 @@ API for sharing stories on LinkedIn.&#10;
         <servers>
             ...
             <server>
-              <id>wutsi-bitly</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-tracing</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-channel-sdk-kotlin</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-site-sdk-kotlin</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-story-sdk-kotlin</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-linkedin-sdk-kotlin</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-stream-rabbitmq</id>
-              <username>${env.GITUB_USER}</username>
-              <password>${env.GITHUB_TOKEN}</password>
-            </server>
-            <server>
-              <id>wutsi-stream-rabbitmq</id>
-              <username>${env.GITUB_USER}</username>
+              <id>github</id>
+              <username>${env.GITHUB_USER}</username>
               <password>${env.GITHUB_TOKEN}</password>
             </server>
         </servers>
@@ -97,4 +61,4 @@ That's it... the API is up and running! Start sending requests :-)
 
 # Links
 - [API](https://wutsi.github.io/linkedin-server/api/)
-- [Documentation](docs)
+- [Documentation](docs/)
