@@ -11,7 +11,7 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.bitly.BitlyUrlShortener
-import com.wutsi.linkedin.AttributeUrn
+import com.wutsi.linkedin.SiteAttribute
 import com.wutsi.linkedin.dao.ShareRepository
 import com.wutsi.linkedin.event.LinkedinEventType.SHARED
 import com.wutsi.linkedin.event.LinkedinSharedEventPayload
@@ -222,7 +222,7 @@ internal class ShareControllerTest {
 
     private fun createSite(
         attributes: List<Attribute> = listOf(
-            Attribute(AttributeUrn.ENABLED.urn, "true")
+            Attribute(SiteAttribute.ENABLED.urn, "true")
         )
     ) = Site(
         id = 1L,

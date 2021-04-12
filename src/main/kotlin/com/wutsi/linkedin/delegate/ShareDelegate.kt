@@ -2,7 +2,7 @@ package com.wutsi.linkedin.`delegate`
 
 import com.echobox.api.linkedin.exception.LinkedInAPIException
 import com.echobox.api.linkedin.types.Share
-import com.wutsi.linkedin.AttributeUrn
+import com.wutsi.linkedin.SiteAttribute
 import com.wutsi.linkedin.dao.SecretRepository
 import com.wutsi.linkedin.dao.ShareRepository
 import com.wutsi.linkedin.entity.SecretEntity
@@ -191,5 +191,5 @@ public class ShareDelegate(
     }
 
     private fun enabled(site: Site): Boolean =
-        site.attributes.find { AttributeUrn.ENABLED.urn == it.urn }?.value == "true"
+        site.attributes.find { SiteAttribute.ENABLED.urn == it.urn }?.value == "true"
 }
