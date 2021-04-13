@@ -208,31 +208,6 @@ internal class ShareControllerTest {
         assertNull(payload.firstValue.postId)
     }
 
-    @Test
-    @Sql(value = ["/db/clean.sql", "/db/ShareController_with_shares.sql"])
-    fun `cannot share a story with no post more than once`() {
-        val site = createSite()
-        doReturn(GetSiteResponse(site)).whenever(siteApi).get(1L)
-
-        val story = createStory()
-        doReturn(GetStoryResponse(story)).whenever(storyApi).get(123L)
-
-        val lkshare = createShare(11L)
-        doReturn(lkshare).whenever(linkedin).postShare(
-            eq(story.title),
-            eq("${story.socialMediaMessage!!} $shortenUrl"),
-            eq(shortenUrl),
-            eq(null),
-            eq(true),
-            any()
-        )
-
-        rest.getForEntity(url, Any::class.java, "123")
-
-        val shares = dao.findAll().toList()
-        assertEquals(1, shares.size)
-    }
-
     private fun createStory(
         userId: Long = 1L,
         socialMediaMessage: String? = "This is nice"
