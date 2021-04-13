@@ -45,8 +45,14 @@ public class ShareDelegate(
     ) {
         val story = storyApi.get(storyId).story
         val site = siteApi.get(story.siteId).site
-        if (!enabled(site))
+        if (!enabled(site)) {
+            LOGGER.info("Site#${story.siteId} doesn't have LinkedIn enabled. Ignoring the request")
             return
+        }
+        if (alreadyPublished(storyId, postId)) {
+            LOGGER.info("{Story#$storyId, Post#$postId} already published. Ignoring the request")
+            return
+        }
 
         val secret = findSecret(story, site) ?: return
         val share = share(story, secret, site, message, pictureUrl, includeLink, postId)
@@ -60,6 +66,9 @@ public class ShareDelegate(
             )
         }
     }
+
+    private fun alreadyPublished(storyId: Long, postId: Long?): Boolean =
+        shareDao.findByStoryIdAndPostId(storyId, postId).isPresent
 
     private fun share(
         story: Story,
