@@ -46,7 +46,7 @@ public class ShareDelegate(
         val story = storyApi.get(storyId).story
         val site = siteApi.get(story.siteId).site
         if (!enabled(site)) {
-            LOGGER.info("Site#${story.siteId} doesn't have LinkedIn enabled. Ignoring the request")
+            LOGGER.warn("Site#${story.siteId} doesn't have LinkedIn enabled. Ignoring the request")
             return
         }
 
@@ -189,6 +189,7 @@ public class ShareDelegate(
         if (opt.isPresent)
             return opt.get()
 
+        LOGGER.warn("User#${story.userId} doesn't have a Linkedin secrets.")
         return null
     }
 
