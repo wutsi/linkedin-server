@@ -56,6 +56,11 @@ spring:
 
 rabbitmq:
   enabled: false
+  url: ${CLOUDAMQP_URL}
+  thread-pool-size: 8
+  max-retries: 10
+  queue-ttl-seconds: 86400       # 24 heures
+  replay-cron: "0 */15 * * * *"  # Replay DLQ every 15 mins
 
 logging:
   level:

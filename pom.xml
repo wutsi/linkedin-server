@@ -41,7 +41,7 @@
     <wutsi-tracing.version>1.2.0</wutsi-tracing.version>
     <wutsi-channel-sdk.version>1.2.0</wutsi-channel-sdk.version>
     <wutsi-post-sdk.version>1.1.0</wutsi-post-sdk.version>
-    <wutsi-stream-rabbitmq.version>1.1.0</wutsi-stream-rabbitmq.version>
+    <wutsi-stream-rabbitmq.version>1.4.0</wutsi-stream-rabbitmq.version>
     <wutsi-site-sdk.version>1.3.0</wutsi-site-sdk.version>
     <wutsi-story-sdk.version>0.4.0</wutsi-story-sdk.version>
     <wutsi-linkedin-sdk.version>1.0.0</wutsi-linkedin-sdk.version>
