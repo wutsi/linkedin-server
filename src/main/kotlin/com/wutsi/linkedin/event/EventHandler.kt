@@ -33,7 +33,7 @@ class EventHandler(
 
     @EventListener
     fun onEvent(event: Event) {
-        LOGGER.info("onEvent($event)")
+        LOGGER.info("onEvent(${event.type}, ...)")
 
         if (event.type == StoryEventType.PUBLISHED.urn) {
             onStoryPublished(event)
