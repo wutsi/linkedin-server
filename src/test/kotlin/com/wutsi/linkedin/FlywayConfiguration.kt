@@ -1,23 +1,23 @@
 package com.wutsi.linkedin
 
 import org.springframework.boot.autoconfigure.flyway.FlywayMigrationStrategy
-import org.springframework.context.annotation.Bean
-import org.springframework.context.annotation.Configuration
+import org.springframework.context.`annotation`.Bean
+import org.springframework.context.`annotation`.Configuration
+import kotlin.Boolean
 
 @Configuration
-internal class FlywayConfiguration {
-    companion object {
-        var cleaned: Boolean = false
+public class FlywayConfiguration {
+    @Bean
+    public fun flywayMigrationStrategy(): FlywayMigrationStrategy = FlywayMigrationStrategy {
+        flyway ->
+        if (!cleaned) {
+            flyway.clean()
+            cleaned = true
+        }
+        flyway.migrate()
     }
 
-    @Bean
-    fun flywayMigrationStrategy(): FlywayMigrationStrategy {
-        return FlywayMigrationStrategy { flyway ->
-            if (!cleaned) {
-                flyway.clean()
-                cleaned = true
-            }
-            flyway.migrate()
-        }
+    public companion object {
+        public var cleaned: Boolean = false
     }
 }

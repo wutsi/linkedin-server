@@ -1,7 +1,7 @@
 package com.wutsi.linkedin.config
 
 import com.wutsi.tracing.TracingContext
-import feign.RequestInterceptor
+import com.wutsi.tracing.TracingRequestInterceptor
 import org.springframework.beans.factory.`annotation`.Autowired
 import org.springframework.context.ApplicationContext
 import org.springframework.context.`annotation`.Bean
@@ -20,6 +20,6 @@ public class TracingConfiguration(
     public fun tracingContext(): TracingContext = com.wutsi.tracing.DynamicTracingContext(context)
 
     @Bean
-    public fun tracingRequestInterceptor(): RequestInterceptor =
-        com.wutsi.tracing.TracingRequestInterceptor("linkedin-server", tracingContext())
+    public fun tracingRequestInterceptor(): TracingRequestInterceptor =
+        TracingRequestInterceptor("linkedin-server", tracingContext())
 }

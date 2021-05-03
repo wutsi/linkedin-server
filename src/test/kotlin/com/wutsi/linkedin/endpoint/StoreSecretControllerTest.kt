@@ -10,25 +10,22 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.http.HttpStatus.OK
 import org.springframework.test.context.jdbc.Sql
-import org.springframework.web.client.RestTemplate
 import kotlin.test.assertEquals
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Sql(value = ["/db/clean.sql", "/db/StoreSecretController.sql"])
-internal class StoreSecretControllerTest {
+internal class StoreSecretControllerTest : ControllerTestBase() {
     @LocalServerPort
     private val port = 0
-
-    private lateinit var url: String
-
-    private val rest: RestTemplate = RestTemplate()
 
     @Autowired
     private lateinit var dao: SecretRepository
 
     @BeforeEach
-    fun setUp() {
-        url = "http://localhost:$port/v1/linkedin/secrets"
+    override fun setUp() {
+        super.setUp()
+
+        login("linkedin")
     }
 
     @Test
@@ -40,7 +37,9 @@ internal class StoreSecretControllerTest {
             accessToken = "token",
             linkedinId = "111"
         )
-        val response = rest.postForEntity(url, request, StoreSecretResponse::class.java)
+
+        val url = "http://localhost:$port/v1/linkedin/secrets"
+        val response = post(url, request, StoreSecretResponse::class.java)
         assertEquals(OK, response.statusCode)
 
         val secret = dao.findById(response.body.secretId).get()
@@ -59,7 +58,9 @@ internal class StoreSecretControllerTest {
             accessToken = "token",
             linkedinId = "222"
         )
-        val response = rest.postForEntity(url, request, StoreSecretResponse::class.java)
+
+        val url = "http://localhost:$port/v1/linkedin/secrets"
+        val response = post(url, request, StoreSecretResponse::class.java)
         assertEquals(OK, response.statusCode)
 
         val secret = dao.findById(response.body.secretId).get()

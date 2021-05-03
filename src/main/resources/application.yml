@@ -61,6 +61,10 @@ rabbitmq:
   max-retries: 10
   queue-ttl-seconds: 86400       # 24 heures
   replay-cron: "0 */15 * * * *"  # Replay DLQ every 15 mins
+security:
+  api-key:
+    id: "00000"
+    header: "Authorization"
 
 logging:
   level:

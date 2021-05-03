@@ -34,20 +34,15 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.boot.test.mock.mockito.MockBean
 import org.springframework.boot.web.server.LocalServerPort
 import org.springframework.test.context.jdbc.Sql
-import org.springframework.web.client.RestTemplate
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
 import kotlin.test.assertTrue
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @Sql(value = ["/db/clean.sql", "/db/ShareController.sql"])
-internal class ShareControllerTest {
+internal class ShareControllerTest : ControllerTestBase() {
     @LocalServerPort
     private val port = 0
-
-    private lateinit var url: String
-
-    private val rest: RestTemplate = RestTemplate()
 
     @Autowired
     private lateinit var dao: ShareRepository
@@ -70,8 +65,10 @@ internal class ShareControllerTest {
     private val shortenUrl = "https://bit.ly/123"
 
     @BeforeEach
-    fun setUp() {
-        url = "http://127.0.0.1:$port/v1/linkedin/share?story-id={story-id}"
+    override fun setUp() {
+        super.setUp()
+
+        login("linkedin")
 
         val bitly = mock<BitlyUrlShortener>()
         doReturn(shortenUrl).whenever(bitly).shorten(any())
@@ -97,7 +94,8 @@ internal class ShareControllerTest {
             any()
         )
 
-        rest.getForEntity(url, Any::class.java, "123")
+        val url = "http://127.0.0.1:$port/v1/linkedin/share?story-id=123"
+        get(url, Any::class.java)
 
         val shares = dao.findAll().toList()[0]
         assertEquals(lkshare.id, shares.linkedinShareId)
@@ -129,7 +127,8 @@ internal class ShareControllerTest {
             any()
         )
 
-        rest.getForEntity(url, Any::class.java, "123")
+        val url = "http://127.0.0.1:$port/v1/linkedin/share?story-id=123"
+        get(url, Any::class.java)
 
         val shares = dao.findAll().toList()[0]
         assertNull(shares.linkedinShareId)
@@ -148,7 +147,8 @@ internal class ShareControllerTest {
         val story = createStory(socialMediaMessage = null)
         doReturn(GetStoryResponse(story)).whenever(storyApi).get(123L)
 
-        rest.getForEntity(url, Any::class.java, "123")
+        val url = "http://127.0.0.1:$port/v1/linkedin/share?story-id=123"
+        get(url, Any::class.java)
 
         verify(linkedin).postShare(
             eq(story.title),
@@ -170,7 +170,8 @@ internal class ShareControllerTest {
         val story = createStory()
         doReturn(GetStoryResponse(story)).whenever(storyApi).get(123L)
 
-        rest.getForEntity(url, Any::class.java, "123")
+        val url = "http://127.0.0.1:$port/v1/linkedin/share?story-id=123"
+        get(url, Any::class.java)
 
         verify(linkedin, never()).postShare(
             any(),
@@ -200,7 +201,8 @@ internal class ShareControllerTest {
             any()
         )
 
-        rest.getForEntity(url, Any::class.java, "123")
+        val url = "http://127.0.0.1:$port/v1/linkedin/share?story-id=123"
+        get(url, Any::class.java)
 
         val payload = argumentCaptor<LinkedinSharedEventPayload>()
         verify(eventStream).publish(eq(SHARED.urn), payload.capture())
