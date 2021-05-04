@@ -21,7 +21,7 @@
   <properties>
     <jacoco.threshold.line>0.75</jacoco.threshold.line>
     <jacoco.threshold.class>0.75</jacoco.threshold.class>
-    <jacoco-maven-plugin.version>0.8.6</jacoco-maven-plugin.version>
+    <jacoco-maven-plugin.version>0.8.7</jacoco-maven-plugin.version>
     <jdk.version>11</jdk.version>
 
     <commons-io.version>2.8.0</commons-io.version>
