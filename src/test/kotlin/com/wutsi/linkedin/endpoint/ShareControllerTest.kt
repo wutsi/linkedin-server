@@ -224,7 +224,7 @@ internal class ShareControllerTest : ControllerTestBase() {
 
     private fun createSite(
         attributes: List<Attribute> = listOf(
-            Attribute(SiteAttribute.ENABLED.urn, "true")
+            Attribute(SiteAttribute.LINKEDIN_ENABLED.urn, "true")
         )
     ) = Site(
         id = 1L,

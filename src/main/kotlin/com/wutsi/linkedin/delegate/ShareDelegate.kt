@@ -194,5 +194,5 @@ public class ShareDelegate(
     }
 
     private fun enabled(site: Site): Boolean =
-        site.attributes.find { SiteAttribute.ENABLED.urn == it.urn }?.value == "true"
+        site.attributes.find { SiteAttribute.LINKEDIN_ENABLED.urn == it.urn }?.value == "true"
 }

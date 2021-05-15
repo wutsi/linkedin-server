@@ -38,21 +38,18 @@
     <postgresql.version>42.2.20</postgresql.version>
     <flyway.version>7.8.2</flyway.version>
     <wutsi-bitly.version>1.1.0</wutsi-bitly.version>
-    <wutsi-tracing.version>1.2.0</wutsi-tracing.version>
     <wutsi-channel-sdk.version>1.2.0</wutsi-channel-sdk.version>
     <wutsi-post-sdk.version>1.1.0</wutsi-post-sdk.version>
-    <wutsi-security.version>1.0.0</wutsi-security.version>
-    <wutsi-stream-rabbitmq.version>1.5.0</wutsi-stream-rabbitmq.version>
-    <wutsi-site-sdk.version>1.6.0</wutsi-site-sdk.version>
+    <wutsi-platform.version>1.1.1</wutsi-platform.version>
     <wutsi-story-sdk.version>0.11.0</wutsi-story-sdk.version>
     <wutsi-linkedin-sdk.version>1.0.0</wutsi-linkedin-sdk.version>
   </properties>
 
   <dependencies>
     <dependency>
-      <groupId>com.wutsi.tracing</groupId>
-      <artifactId>wutsi-tracing</artifactId>
-      <version>${wutsi-tracing.version}</version>
+      <groupId>com.wutsi.plaform</groupId>
+      <artifactId>wutsi-platform</artifactId>
+      <version>${wutsi-platform.version}</version>
     </dependency>
     <dependency>
       <groupId>com.wutsi.channel</groupId>
@@ -65,11 +62,6 @@
       <version>${wutsi-post-sdk.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.wutsi.site</groupId>
-      <artifactId>site-sdk-kotlin</artifactId>
-      <version>${wutsi-site-sdk.version}</version>
-    </dependency>
-    <dependency>
       <groupId>com.wutsi.story</groupId>
       <artifactId>story-sdk-kotlin</artifactId>
       <version>${wutsi-story-sdk.version}</version>
@@ -80,32 +72,22 @@
       <version>${wutsi-linkedin-sdk.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.wutsi.security</groupId>
-      <artifactId>wutsi-security</artifactId>
-      <version>${wutsi-security.version}</version>
-    </dependency>
-    <dependency>
       <groupId>com.wutsi.bitly</groupId>
       <artifactId>wutsi-bitly</artifactId>
       <version>${wutsi-bitly.version}</version>
     </dependency>
+
     <dependency>
       <groupId>org.jetbrains.kotlin</groupId>
       <artifactId>kotlin-stdlib</artifactId>
       <version>${kotlin.version}</version>
     </dependency>
     <dependency>
-      <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-module-kotlin</artifactId>
-      <version>${jackson-module-kotlin.version}</version>
+      <groupId>org.jetbrains.kotlin</groupId>
+      <artifactId>kotlin-reflect</artifactId>
+      <version>${kotlin.version}</version>
     </dependency>
-    <dependency>
-      <groupId>com.fasterxml.jackson.module</groupId>
-      <artifactId>jackson-modules-java8</artifactId>
-      <version>${jackson-modules-java8.version}</version>
-      <type>pom</type>
-      <scope>runtime</scope>
-    </dependency>
+
     <dependency>
       <groupId>commons-io</groupId>
       <artifactId>commons-io</artifactId>
