@@ -29,8 +29,6 @@
     <junit.version>5.7.1</junit.version>
     <kotlin.version>1.5.0</kotlin.version>
     <kotlin-mockito.version>2.2.0</kotlin-mockito.version>
-    <jackson-module-kotlin.version>2.12.3</jackson-module-kotlin.version>
-    <jackson-modules-java8.version>2.12.3</jackson-modules-java8.version>
     <klint.version>0.41.0</klint.version>
     <linkedin-sdk.version>2.0.1</linkedin-sdk.version>
     <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
@@ -47,7 +45,7 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.wutsi.plaform</groupId>
+      <groupId>com.wutsi.platform</groupId>
       <artifactId>wutsi-platform</artifactId>
       <version>${wutsi-platform.version}</version>
     </dependency>
@@ -135,15 +133,6 @@
       <version>${flyway.version}</version>
     </dependency>
     <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-cache</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.wutsi</groupId>
-      <artifactId>wutsi-stream-rabbitmq</artifactId>
-      <version>${wutsi-stream-rabbitmq.version}</version>
-    </dependency>
-    <dependency>
       <groupId>com.echobox</groupId>
       <artifactId>ebx-linkedin-sdk</artifactId>
       <version>${linkedin-sdk.version}</version>
@@ -186,11 +175,6 @@
       <id>maven</id>
       <name>maven</name>
       <url>https://repo1.maven.org/maven2</url>
-    </repository>
-    <repository>
-      <id>central</id>
-      <name>bintray</name>
-      <url>http://jcenter.bintray.com</url>
     </repository>
     <repository>
       <id>github</id>

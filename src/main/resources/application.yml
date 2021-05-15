@@ -20,6 +20,10 @@ management:
 spring:
   main:
     lazy-initialization: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
 
   jackson:
     deserialization:
@@ -54,21 +58,23 @@ spring:
       maximum-pool-size: 8 #maximum pool size
       max-lifetime: 1000 # maximum lifetime in milliseconds of a connection in the pool after it is closed.
 
-rabbitmq:
-  enabled: false
-  url: ${CLOUDAMQP_URL}
-  thread-pool-size: 8
-  max-retries: 10
-  queue-ttl-seconds: 86400       # 24 heures
-  replay-cron: "0 */15 * * * *"  # Replay DLQ every 15 mins
-security:
-  api-key:
-    id: "00000"
-    header: "Authorization"
+wutsi:
+  client-id: "linkedin"
+  rabbitmq:
+    enabled: false
+    url: ${CLOUDAMQP_URL}
+    thread-pool-size: 8
+    max-retries: 10
+    queue-ttl-seconds: 86400       # 24 heures
+    replay-cron: "0 */15 * * * *"  # Replay DLQ every 15 mins
+  security:
+    api-key:
+      id: "00000"
 
 logging:
   level:
     root: INFO
+    com.wutsi.linkedin: DEBUG
   pattern:
     console: "%d type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"
     file: "%d type=%level logger=%class{20} thread=%thread request_id=%X{request_id} client_id=%X{client_id} device_id=%X{device_id} :%m%n"

@@ -1,6 +1,6 @@
 #/bin/sh
 
-CODEGEN_VERSION="0.0.31"
+CODEGEN_VERSION="0.0.33-SNAPSHOT"
 CODEGEN_JAR=~/wutsi-codegen/wutsi-codegen-${CODEGEN_VERSION}.jar
 
 API_NAME=linkedin

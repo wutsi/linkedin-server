@@ -10,11 +10,13 @@ spring:
     username: ${SPRING_DATABASE_USERNAME}
     password: ${SPRING_DATABASE_PASSWORD}
 
-rabbitmq:
-  enabled: true
-security:
-  api-key:
-    id: ${API_KEY_ID}
+wutsi:
+  client-id: "linkedin"
+  rabbitmq:
+    enabled: true
+  security:
+    api-key:
+      id: ${API_KEY_ID}
 
 logging:
   pattern:

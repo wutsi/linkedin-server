@@ -2,7 +2,7 @@ package com.wutsi.linkedin.service.bitly
 
 import com.wutsi.bitly.DefaultBitlyUrlShortener
 import com.wutsi.bitly.NullBitlyUrlShortener
-import com.wutsi.linkedin.SiteAttribute
+import com.wutsi.site.SiteAttribute
 import com.wutsi.site.dto.Attribute
 import com.wutsi.site.dto.Site
 import org.junit.jupiter.api.Assertions.assertTrue

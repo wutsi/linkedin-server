@@ -11,13 +11,13 @@ import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
 import com.wutsi.bitly.BitlyUrlShortener
-import com.wutsi.linkedin.SiteAttribute
 import com.wutsi.linkedin.dao.ShareRepository
 import com.wutsi.linkedin.event.LinkedinEventType.SHARED
 import com.wutsi.linkedin.event.LinkedinSharedEventPayload
 import com.wutsi.linkedin.service.bitly.BitlyUrlShortenerFactory
 import com.wutsi.linkedin.service.linkedin.Linkedin
 import com.wutsi.site.SiteApi
+import com.wutsi.site.SiteAttribute
 import com.wutsi.site.dto.Attribute
 import com.wutsi.site.dto.GetSiteResponse
 import com.wutsi.site.dto.Site

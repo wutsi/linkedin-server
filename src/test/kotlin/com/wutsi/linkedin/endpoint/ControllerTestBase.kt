@@ -3,8 +3,8 @@ package com.wutsi.linkedin.endpoint
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.doReturn
 import com.nhaarman.mockitokotlin2.whenever
+import com.wutsi.platform.security.apikey.ApiKeyContext
 import com.wutsi.security.SecurityApi
-import com.wutsi.security.apikey.ApiKeyContext
 import com.wutsi.security.dto.ApiKey
 import com.wutsi.security.dto.GetApiKeyResponse
 import org.junit.jupiter.api.BeforeEach

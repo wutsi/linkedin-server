@@ -2,7 +2,6 @@ package com.wutsi.linkedin.`delegate`
 
 import com.echobox.api.linkedin.exception.LinkedInAPIException
 import com.echobox.api.linkedin.types.Share
-import com.wutsi.linkedin.SiteAttribute
 import com.wutsi.linkedin.dao.SecretRepository
 import com.wutsi.linkedin.dao.ShareRepository
 import com.wutsi.linkedin.entity.SecretEntity
@@ -12,6 +11,7 @@ import com.wutsi.linkedin.event.LinkedinSharedEventPayload
 import com.wutsi.linkedin.service.bitly.BitlyUrlShortenerFactory
 import com.wutsi.linkedin.service.linkedin.Linkedin
 import com.wutsi.site.SiteApi
+import com.wutsi.site.SiteAttribute
 import com.wutsi.site.dto.Site
 import com.wutsi.story.StoryApi
 import com.wutsi.story.dto.Story

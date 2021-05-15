@@ -1,6 +1,7 @@
 package com.wutsi.linkedin.config
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.wutsi.platform.security.apikey.ApiKeyRequestInterceptor
 import com.wutsi.post.PostApi
 import com.wutsi.post.PostApiBuilder
 import feign.RequestInterceptor
@@ -14,7 +15,8 @@ import org.springframework.core.env.Profiles
 public class PostConfiguration(
     @Autowired private val env: Environment,
     @Autowired private val mapper: ObjectMapper,
-    @Autowired private val tracingRequestInterceptor: RequestInterceptor
+    @Autowired private val tracingRequestInterceptor: RequestInterceptor,
+    @Autowired private val apiKeyRequestInterceptor: ApiKeyRequestInterceptor
 ) {
     @Bean
     fun postApi(): PostApi =
@@ -22,7 +24,7 @@ public class PostConfiguration(
             .build(
                 env = postEnvironment(),
                 mapper = mapper,
-                interceptors = listOf(tracingRequestInterceptor)
+                interceptors = listOf(tracingRequestInterceptor, apiKeyRequestInterceptor)
             )
 
     fun postEnvironment(): com.wutsi.post.Environment =
