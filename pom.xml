@@ -29,7 +29,7 @@
     <junit.version>5.7.1</junit.version>
     <kotlin.version>1.5.0</kotlin.version>
     <kotlin-mockito.version>2.2.0</kotlin-mockito.version>
-    <klint.version>0.41.0</klint.version>
+    <klint.version>0.42.1</klint.version>
     <linkedin-sdk.version>2.0.1</linkedin-sdk.version>
     <maven-antrun-plugin.version>3.0.0</maven-antrun-plugin.version>
     <hikari-cp.version>4.0.3</hikari-cp.version>
