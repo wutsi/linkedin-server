@@ -27,7 +27,7 @@
     <commons-io.version>2.8.0</commons-io.version>
     <javax-validation.version>2.0.1.Final</javax-validation.version>
     <junit.version>5.7.1</junit.version>
-    <kotlin.version>1.5.0</kotlin.version>
+    <kotlin.version>1.5.31</kotlin.version>
     <kotlin-mockito.version>2.2.0</kotlin-mockito.version>
     <klint.version>0.41.0</klint.version>
     <linkedin-sdk.version>2.0.1</linkedin-sdk.version>
